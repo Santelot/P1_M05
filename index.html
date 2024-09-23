@@ -1,0 +1,424 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Playbook-P1-M05</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            padding: 20px;
+        }
+        .header {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px;
+            text-align: center;
+        }
+        .banner {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px;
+            cursor: pointer;
+            margin-bottom: 10px;
+        }
+        .banner .title {
+            font-size: 1.2em;
+            display: flex;
+            justify-content: space-between;
+        }
+        .banner .subtitle {
+            font-size: 1em;
+            margin-top: 5px;
+            border-top: 1px solid white;
+            padding-top: 5px;
+        }
+        .content {
+            display: none;
+            padding: 10px;
+            border: 1px solid #ddd;
+            margin-bottom: 10px;
+        }
+        .section {
+            margin-bottom: 15px;
+        }
+        .step-title {
+            font-weight: bold;
+            color: #333;
+            margin-bottom: 5px;
+            text-align: left;
+        }
+        .dialogue {
+            background-color: #f0f0f0;
+            border: 1px solid #ddd;
+            border-radius: 10px;
+            padding: 10px;
+            margin: 10px 0;
+            text-align: right;
+            font-style: italic;
+        }
+        .dropdown {
+            margin-bottom: 20px;
+        }
+        .dropdown select {
+            font-size: 1em;
+            padding: 5px;
+            margin-left: 10px;
+        }
+        .time-title {
+            font-size: 1.5em;
+            margin-bottom: 10px;
+        }
+        .note {
+            background-color: #ffeb3b;
+            padding: 10px;
+            border: 1px solid #ddd;
+            margin-bottom: 10px;
+        }
+        .nav-buttons {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 10px;
+        }
+        .nav-buttons button {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            cursor: pointer;
+        }
+        .nav-buttons button:disabled {
+            background-color: #ddd;
+            cursor: not-allowed;
+        }
+    </style>
+    <script>
+        function toggleContent(id) {
+            var content = document.getElementById(id);
+            if (content.style.display === "none") {
+                content.style.display = "block";
+            } else {
+                content.style.display = "none";
+            }
+        }
+
+        function updateActivities() {
+            var selectedTime = document.getElementById('time-select').value;
+            var activities = document.getElementsByClassName('activity');
+
+            document.getElementById('selected-time').innerText = "Tiempo efectivo de clase: " + selectedTime + " minutos";
+
+            for (var i = 0; i < activities.length; i++) {
+                activities[i].style.display = 'block';
+            }
+
+            if (selectedTime === '45') {
+                document.getElementById('activity-2').style.display = 'none';
+            } else if (selectedTime === '40') {
+                document.getElementById('activity-2').style.display = 'none';
+                document.getElementById('activity-4').style.display = 'none';
+            }
+        }
+
+        function navigateTo(id) {
+            var element = document.getElementById(id);
+            window.scrollTo({
+                top: element.offsetTop,
+                behavior: 'smooth'
+            });
+        }
+    </script>
+</head>
+<body onload="updateActivities()">
+
+<div class="header">
+    <h1>Playbook-P1-M05</h1>
+</div>
+
+<div class="container">
+    <div class="dropdown">
+        <label for="time-select">Tiempo efectivo de Clase:</label>
+        <select id="time-select" onchange="updateActivities()">
+            <option value="50">50 minutos</option>
+            <option value="45">45 minutos</option>
+            <option value="40">40 minutos</option>
+        </select>
+    </div>
+
+    <h2 id="selected-time" class="time-title">Tiempo efectivo de clase: 50 minutos</h2>
+<!-- Actividad 0 (1 paso) -->
+<div id="activity-0" class="activity">
+    <div class="banner" onclick="toggleContent('revision-mision')">
+        <div class="title">
+            <span>📝 Actividad 0: Revisión Misión (1 paso)</span>
+            <span>⏰ Tiempo: N/A</span>
+        </div>
+        <div class="subtitle">Preparación de materiales y equipos</div>
+        <div class="summary">Verificar que los estudiantes tengan acceso a MakeCode y las Magic Tablets</div>
+    </div>
+    <div id="revision-mision" class="content">
+        <div class="section">
+            <div class="step-title">Paso 1 (N/A): Proyectar la diapositiva 1 "Materiales y Preparación de la Misión" y verificar acceso a los recursos</div>
+            <div class="dialogue">"¡Hola, Genios! Hoy vamos a aprender a usar el mouse para jugar en la computadora. ¡Prepárense para una misión divertida!"</div>
+        </div>
+    </div>
+</div>
+<!-- Actividad 1 (4 pasos) -->
+<div id="activity-1" class="activity">
+    <div class="banner" onclick="toggleContent('saludo-ritual')">
+        <div class="title">
+            <span>👋 Actividad 1: Saludo y Ritual Gnius Club (4 pasos)</span>
+            <span>⏰ Tiempo: 2.5 minutos</span>
+        </div>
+        <div class="subtitle">Dar la bienvenida y preparar a los estudiantes para la misión</div>
+        <div class="summary">Realización del saludo, estado de ánimo y objetivos de la clase</div>
+    </div>
+    <div id="saludo-ritual" class="content">
+        <div class="section">
+            <div class="step-title">Paso 1 (0.5 minutos): Proyectar la diapositiva 2 "Saludo y Ritual Gnius Club" y dar la bienvenida a los estudiantes</div>
+            <div class="dialogue">"¡Hola, Genios! 🌟 ¡Qué alegría verlos aquí! Empecemos con nuestro saludo Gnius y veamos cómo están todos hoy."</div>
+        </div>
+        <div class="section">
+            <div class="step-title">Paso 2 (0.5 minutos): Proyectar la diapositiva 3 "Estado de Ánimo" y pedir a los estudiantes que expresen cómo se sienten usando gestos</div>
+            <div class="dialogue">"¿Cómo se sienten hoy? Levanten las manos si están emocionados por aprender algo nuevo, crucen los brazos si necesitan más energía."</div>
+        </div>
+        <div class="section">
+            <div class="step-title">Paso 3 (0.5 minutos): Proyectar la diapositiva 4 "Ritual de Agradecimiento" y guiar el ritual</div>
+            <div class="dialogue">"Juntémonos en agradecimiento por lo que vamos a aprender hoy. ¡Gracias por asistir y por su entusiasmo, Genios!"</div>
+        </div>
+        <div class="section">
+            <div class="step-title">Paso 4 (1 minuto): Proyectar la diapositiva 5 "Objetivos de la Misión" y explicar los objetivos del día</div>
+            <div class="dialogue">"Hoy aprenderemos cómo usar el mouse para interactuar con los juegos en la computadora."</div>
+        </div>
+    </div>
+</div>
+<!-- Actividad 2 (4 pasos) -->
+<div id="activity-2" class="activity">
+    <div class="banner" onclick="toggleContent('innovacion-dia')">
+        <div class="title">
+            <span>💡 Actividad 2: Innovación del Día (4 pasos)</span>
+            <span>⏰ Tiempo: 6.5 minutos</span>
+        </div>
+        <div class="subtitle">Exploración de la innovación a través de un juego</div>
+        <div class="summary">Introducción al juego Osu! y cómo mejora la coordinación y habilidades físicas</div>
+    </div>
+    <div id="innovacion-dia" class="content">
+        <div class="section">
+            <div class="step-title">Paso 1 (1 minuto): Proyectar la diapositiva de Innovación del Día</div>
+            <div class="dialogue">"Genios, ¿sabían que los juegos como Osu! pueden mejorar nuestra coordinación y habilidades físicas?"</div>
+        </div>
+        <div class="section">
+            <div class="step-title">Paso 2 (2 minutos): Mostrar el video de 1 minuto sobre el juego Osu!</div>
+            <div class="dialogue">"Vamos a ver un video corto sobre cómo se juega Osu! y cómo este tipo de juegos pueden ayudarnos a mejorar nuestras habilidades."</div>
+        </div>
+        <div class="section">
+            <div class="step-title">Paso 3 (2 minutos): Explicar el impacto de la innovación</div>
+            <div class="dialogue">"Juegos como Osu! no solo son divertidos, sino que también mejoran nuestra coordinación y habilidades motoras finas."</div>
+        </div>
+        <div class="section">
+            <div class="step-title">Paso 4 (1.5 minutos): Proyectar la diapositiva de reflexión</div>
+            <div class="dialogue">"¿Cómo creen que jugar a ´Osu!´ puede ayudarnos a ser más coordinados y mejorar nuestras habilidades?"</div>
+        </div>
+    </div>
+</div>
+<!-- Actividad 3 (7 pasos) -->
+<div id="activity-3" class="activity">
+    <div class="banner" onclick="toggleContent('brain-gym')">
+        <div class="title">
+            <span>🧠 Actividad 3: Brain Gym (7 pasos)</span>
+            <span>⏰ Tiempo: 8 minutos</span>
+        </div>
+        <div class="subtitle">Activación mental y navegación en juegos educativos</div>
+        <div class="summary">Exploración del sitio Vedoque y el juego "Mueve la mano" para mejorar el uso del mouse</div>
+    </div>
+    <div id="brain-gym" class="content">
+        <div class="section">
+            <div class="step-title">Paso 1 (0.5 minutos): Proyectar diapositiva de introducción al sitio</div>
+            <div class="dialogue">"¡Genios, es hora de activar nuestro cerebro con un poco de Brain Gym! Vamos a aprender sobre los juegos educativos y el control de mouse. Al final de la clase voy a lanzar una pregunta y quien la responda, ganará un mon-e."</div>
+        </div>
+        <div class="section">
+            <div class="step-title">Paso 2 (1.5 minutos): Proyectar diapositiva de navegación en la web</div>
+            <div class="dialogue">"Abramos el explorador de internet y escribamos 'www.vedoque.com'."</div>
+        </div>
+        <div class="section">
+            <div class="step-title">Paso 3 (2 minutos): Proyectar diapositiva de navegación en el sitio</div>
+            <div class="dialogue">"En el menú de la página, hagan clic izquierdo en 'Infantiles'. Usen el scroll, que es la rueda en el medio del mouse, para moverse hacia abajo hasta encontrar la sección 'Otros'."</div>
+        </div>
+        <div class="section">
+            <div class="step-title">Paso 4 (0.5 minutos): Proyectar diapositiva de selección del juego</div>
+            <div class="dialogue">"Den clic izquierdo en el juego 'Mueve la mano'."</div>
+        </div>
+        <div class="section">
+            <div class="step-title">Paso 5 (1.5 minutos): Proyectar diapositiva de instrucciones del juego</div>
+            <div class="dialogue">"Ahora, vamos a aprender cómo jugar 'Mueve la mano'. Usen el mouse para hacer clic y arrastrar los objetos en el juego."</div>
+        </div>
+        <div class="section">
+            <div class="step-title">Paso 6 (0.5 minutos): Proyectar diapositiva del dato</div>
+            <div class="dialogue">"El puntero del mouse tiene la forma que tiene porque cuando se inventó, la resolución de las pantallas era muy baja, y un puntero inclinado era más visible."</div>
+        </div>
+        <div class="section">
+            <div class="step-title">Paso 7 (1.5 minutos): Proyectar diapositiva de práctica</div>
+            <div class="dialogue">"Ahora, vamos a practicar lo que hemos aprendido. Intenten mover y arrastrar objetos en el juego 'Mueve la mano'."</div>
+        </div>
+    </div>
+</div>
+<!-- Actividad 4 (4 pasos) -->
+<div id="activity-4" class="activity">
+    <div class="banner" onclick="toggleContent('state-change')">
+        <div class="title">
+            <span>🧘‍♂️ Actividad 4: State Change (4 pasos)</span>
+            <span>⏰ Tiempo: 2 minutos</span>
+        </div>
+        <div class="subtitle">Activación física con la actividad de "Dedos Mágicos"</div>
+        <div class="summary">Activación física para mejorar la coordinación y habilidades motoras finas</div>
+    </div>
+    <div id="state-change" class="content">
+        <div class="section">
+            <div class="step-title">Paso 1 (0.5 minutos): Proyectar diapositiva de la actividad</div>
+            <div class="dialogue">"¡Vamos a hacer una pequeña pausa para activar nuestras habilidades motoras finas con la actividad de 'Dedos Mágicos'!"</div>
+        </div>
+        <div class="section">
+            <div class="step-title">Paso 2 (0.5 minutos): Guiar a los estudiantes en la actividad</div>
+            <div class="dialogue">"Primero, junten las yemas de los dedos de ambas manos. Ahora, separen y junten los dedos varias veces, como si fueran pinzas."</div>
+        </div>
+        <div class="section">
+            <div class="step-title">Paso 3 (0.5 minutos): Guiar a los estudiantes en la actividad</div>
+            <div class="dialogue">"Ahora, hagan pequeños círculos con las yemas de los dedos sobre la palma de la otra mano. Cambien de mano y repitan."</div>
+        </div>
+        <div class="section">
+            <div class="step-title">Paso 4 (0.5 minutos): Guiar a los estudiantes en la actividad</div>
+            <div class="dialogue">"Finalmente, entrelacen los dedos y estiren los brazos hacia adelante. Mantengan la posición por unos segundos y luego relajen."</div>
+        </div>
+    </div>
+</div>
+<!-- Actividad 5 (3 pasos) -->
+<div id="activity-5" class="activity">
+    <div class="banner" onclick="toggleContent('team-gnius')">
+        <div class="title">
+            <span>🤝 Actividad 5: Team Gnius (3 pasos)</span>
+            <span>⏰ Tiempo: 3.5 minutos</span>
+        </div>
+        <div class="subtitle">Formación de equipos y asignación de roles</div>
+        <div class="summary">Trabajando en equipos para mejorar las habilidades de juego y coordinación</div>
+    </div>
+    <div id="team-gnius" class="content">
+        <div class="section">
+            <div class="step-title">Paso 1 (1 minuto): Guiar a los estudiantes en la formación de equipos</div>
+            <div class="dialogue">"¡Es hora de trabajar en equipo, Genios! Vamos a formar grupos de 3. Tienen 30 segundos para decidir con quién van a trabajar."</div>
+        </div>
+        <div class="section">
+            <div class="step-title">Paso 2 (0.5 minutos): Proyectar diapositiva de roles</div>
+            <div class="dialogue">"Cada equipo tendrá un Jugador, un Coach y un Verificador. El Jugador jugará los juegos, el Coach dará indicaciones para que se juegue mejor, y el Verificador dirá si lo está haciendo bien."</div>
+        </div>
+        <div class="section">
+            <div class="step-title">Paso 3 (2 minutos): Proyectar diapositiva de preparación</div>
+            <div class="dialogue">"Decidan entre ustedes quién será el Jugador, el Coach, y el Verificador. Tienen 2 minutos para organizarse."</div>
+        </div>
+    </div>
+</div>
+<!-- Actividad 6 (6 pasos) -->
+<div id="activity-6" class="activity">
+    <div class="banner" onclick="toggleContent('challenge')">
+        <div class="title">
+            <span>🏆 Actividad 6: Challenge (6 pasos)</span>
+            <span>⏰ Tiempo: 17 minutos</span>
+        </div>
+        <div class="subtitle">Juego en equipo para completar niveles en el juego "Mueve la mano"</div>
+        <div class="summary">Los equipos trabajarán juntos para completar todos los niveles del juego "Mueve la mano" mientras cambian de roles cada 5 minutos</div>
+    </div>
+    <div id="challenge" class="content">
+        <div class="section">
+            <div class="step-title">Paso 1 (1 minuto): Proyectar diapositiva de introducción al desafío</div>
+            <div class="dialogue">"¡Es hora del desafío, Genios! Vamos a jugar el juego 'Mueve la mano'. Cada equipo tendrá que completar todos los niveles del juego. Cada 5 minutos, cambiarán de rol: Jugador, Coach y Verificador."</div>
+        </div>
+        <div class="section">
+            <div class="step-title">Paso 2 (5 minutos): Guiar a los estudiantes para empezar el juego</div>
+            <div class="dialogue">"Equipos, prepárense para comenzar. Jugadores, abran el juego 'Mueve la mano' y empiecen a jugar. Coaches, den instrucciones para mejorar. Verificadores, observen y asegúrense de que todo se haga correctamente."</div>
+        </div>
+        <div class="section">
+            <div class="step-title">Paso 3 (5 minutos): Supervisar la actividad y anunciar el cambio de roles</div>
+            <div class="dialogue">"Han pasado 5 minutos. Es hora de cambiar de rol. Jugadores, pasen el mouse al Coach, Coaches pasen a ser Verificadores, Verificadores pasen a ser Jugadores."</div>
+        </div>
+        <div class="section">
+            <div class="step-title">Paso 4 (5 minutos): Supervisar la actividad y anunciar el cambio de roles</div>
+            <div class="dialogue">"Han pasado otros 5 minutos. Cambien de rol nuevamente. Sigan jugando y completando los niveles."</div>
+        </div>
+        <div class="section">
+            <div class="step-title">Paso 5 (0.5 minutos): Guiar a los estudiantes en la discusión</div>
+            <div class="dialogue">"¡Genios, excelente trabajo! Ahora, vamos a discutir cómo se sintieron en cada rol y qué aprendieron de esta actividad."</div>
+        </div>
+        <div class="section">
+            <div class="step-title">Paso 6 (0.5 minutos): Revisar los objetivos alcanzados de la clase</div>
+            <div class="dialogue">"Genios, muy bien, hemos alcanzado los objetivos de la clase."</div>
+        </div>
+    </div>
+</div>
+<!-- Actividad 7 (4 pasos) -->
+<div id="activity-7" class="activity">
+    <div class="banner" onclick="toggleContent('easter-egg')">
+        <div class="title">
+            <span>🥚 Actividad 7: Easter Egg (4 pasos)</span>
+            <span>⏰ Tiempo: 3 minutos</span>
+        </div>
+        <div class="subtitle">Dinámica de preguntas y respuestas con premios Mon-e</div>
+        <div class="summary">Recompensa para los estudiantes que hayan prestado atención durante la clase</div>
+    </div>
+    <div id="easter-egg" class="content">
+        <div class="section">
+            <div class="step-title">Paso 1 (0.5 minutos): Proyectar diapositiva de la pregunta</div>
+            <div class="dialogue">"Ahora es el momento de ver quién ha estado prestando atención. La siguiente diapositiva tiene una pregunta sobre algo que discutimos hoy. Voy a premiar con Mon-e a las tres primeras personas que me den la respuesta correcta. Recuerden, la dinámica es la siguiente: en cuanto pase a la siguiente diapositiva, lean la pregunta y si saben la respuesta, levanten la mano. No digan la respuesta en voz alta, solo levanten la mano. Yo seleccionaré a 3 de ustedes. ¿Listos?"</div>
+        </div>
+        <div class="section">
+            <div class="step-title">Paso 2 (1 minuto): Guiar a los estudiantes en la actividad</div>
+            <div class="dialogue">"Ahora, levanten la mano si saben la respuesta."</div>
+        </div>
+        <div class="section">
+            <div class="step-title">Paso 3 (1 minuto): Seleccionar a los estudiantes y escuchar sus respuestas en voz baja</div>
+            <div class="dialogue">"Primero tú, acércate y dime la respuesta en voz baja." (Repetir para los otros dos estudiantes seleccionados)</div>
+        </div>
+        <div class="section">
+            <div class="step-title">Paso 4 (0.5 minutos): Proyectar diapositiva de la respuesta</div>
+            <div class="dialogue">"¡Muy bien, Genios! La respuesta correcta es: El puntero del mouse tiene una forma inclinada porque cuando se inventó, la resolución de las pantallas era muy baja y un puntero inclinado era más visible. Felicitaciones a los que respondieron correctamente, aquí tienen su Mon-e."</div>
+        </div>
+    </div>
+</div>
+<!-- Actividad 8 (3 pasos) -->
+<div id="activity-8" class="activity">
+    <div class="banner" onclick="toggleContent('honor-dojo')">
+        <div class="title">
+            <span>🏅 Actividad 8: Honor de Dojo (3 pasos)</span>
+            <span>⏰ Tiempo: 3 minutos</span>
+        </div>
+        <div class="subtitle">Reflexión final y reconocimiento del esfuerzo</div>
+        <div class="summary">Reflexión sobre lo aprendido y el trabajo en equipo durante la clase</div>
+    </div>
+    <div id="honor-dojo" class="content">
+        <div class="section">
+            <div class="step-title">Paso 1 (1 minuto): Guiar a los estudiantes en la reflexión</div>
+            <div class="dialogue">"Genios, tomémonos un momento para reflexionar sobre lo que hemos aprendido y logrado hoy. ¿Qué fue lo más divertido o interesante que encontraron en el juego 'Mueve la mano'?"</div>
+        </div>
+        <div class="section">
+            <div class="step-title">Paso 2 (1 minuto): Proyectar diapositiva de reconocimiento</div>
+            <div class="dialogue">"Estoy muy orgulloso de cada uno de ustedes por su esfuerzo y trabajo en equipo. ¡Bien hecho, Genios!"</div>
+        </div>
+        <div class="section">
+            <div class="step-title">Paso 3 (1 minuto): Guiar a los estudiantes a recoger el lugar</div>
+            <div class="dialogue">"Ahora, es importante que dejemos nuestro espacio limpio y ordenado para la siguiente clase. Por favor, recojan sus materiales y asegúrense de que todo esté en su lugar."</div>
+        </div>
+    </div>
+</div>
+</div> <!-- Cierre del container -->
+
+    <!-- Scripts adicionales si es necesario -->
+    <script>
+        // Agregar scripts adicionales aquí si es necesario
+    </script>
+
+    </body>
+    </html>
